@@ -1,0 +1,154 @@
+.logo {
+	margin-top: 100px;
+	width: 298px;
+}
+
+.admin_login_st {
+	margin-top: 10px;
+	font-weight: bold;
+}
+
+.t_m_25 {
+	margin-top: 25px;
+}
+
+.margin-top-10 {
+	margin-top: 10px !important;
+}
+
+.margin-top-15 {
+	margin-top: 15px;
+}
+
+@media all and (max-width:480px) {
+	.btn-xs-block { width: 100%; display:block; }
+} 
+
+
+@media all and (max-width:575px) {
+
+	.ladda-button {
+		margin-top:15px;
+		margin-left: -15px;
+	}
+
+}
+.page-item.active .page-link {color: #fff !important;}
+
+.inmodal .modal-header {
+	padding: 15px !important;
+}
+.md-15 {
+	margin-bottom: 15px;
+}
+.md-20 {
+	margin-bottom: 20px;
+}
+.pro_action_btns {
+	padding-top: 5px !important;
+	margin-right: 0px !important;
+}
+.faq-item {
+	border-bottom: 2px solid #f2f2fb;
+}
+
+#data_1{
+	width: 100% !important;
+}
+
+#data_download{
+	width: 100% !important;
+}
+
+.promo_from_date {
+	width: 100% !important;
+	margin-top: 15px;
+}
+
+.product-price.promo-date  {
+	left: 0;
+	background: #000;
+	margin: 30px 15px 0px;
+}
+
+.wrapper .change_pass.middle-box {
+	margin-top: 0px !important;
+}
+.change_pass.middle-box {
+	padding-top: 0px !important;
+}
+
+#delete_selected {
+	padding: 7px; margin-left: 5px;
+}
+
+
+.silver{ 
+	background-color:#bdbdbd;
+	color: #fff;
+}
+.gold{ 
+	background-color:#d6a542;
+	color: #fff;
+}
+.platinum{ 
+	background-color:#585858;
+	color: #fff;
+}
+.zenith{ 
+	background-color:#e10988;
+	color: #fff;
+}
+
+@media (min-width: 768px) {
+	.modal-xl {
+		width: 90%;
+		max-width:1200px;
+	}
+}
+
+#start_end_date {
+	width: 275px !important;
+}
+
+.c-m-t {
+	margin-top: 18px;
+}
+@media all and (max-width:767px) {
+	.c-m-t { margin-top: 0px; }
+} 
+.user-image {
+	width: 50px;
+	height: 50px;
+	overflow: hidden;
+	text-align: center;
+	border-radius: 50%;
+}
+.user-image img {
+	width: 100%;
+}
+.select2-container .select2-selection--single {
+	height: 35px;
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+	color: inherit;
+	line-height: 32px;
+	font-size: 0.9rem;
+}
+
+.select2-container--bootstrap4 .select2-results__option--highlighted, .select2-container--bootstrap4 .select2-results__option--highlighted.select2-results__option[aria-selected="true"] {
+	background-color: #1ab394 !important;
+	color: #f8f9fa !important;
+}
+
+.select2-container--bootstrap4.select2-container--focus .select2-selection {
+	border-color: #1ab394 !important;
+	-webkit-box-shadow: 0 0 0 .1rem #1ab394 !important;
+	box-shadow: unset !important;
+}
+
+.custum_plr {
+	padding-left: 17px !important;
+	padding-right: 17px !important;
+	background: white !important;
+}
