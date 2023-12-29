@@ -195,3 +195,9 @@ if (!function_exists('find_records')) {
 		}
 	}
 }
+if (!function_exists('count_subcategories')) {
+	function count_subcategories($category_id) {
+		$query = DB::table('categories')->where('parent_id', $category_id)->count();
+		return $query;
+	}
+}

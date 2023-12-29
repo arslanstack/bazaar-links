@@ -18,7 +18,7 @@ class User extends Authenticatable implements JWTSubject
      *
      * @var array<int, string>
      */
-    protected $fillable = ['name', 'email', 'password', 'phone_no', 'address' , 'city', 'zip', 'image_name', 'image_path', 'otp', 'status', 'created_at', 'updated_at'];
+    protected $fillable = ['name', 'email', 'password', 'phone_no', 'address' , 'city_id', 'zip', 'image_name', 'image_path', 'otp', 'status', 'is_blocked', 'created_at', 'updated_at'];
     protected $appends = ['image_path'];
 
     public function getImagePathAttribute()
@@ -58,5 +58,10 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class, 'city_id');
     }
 }

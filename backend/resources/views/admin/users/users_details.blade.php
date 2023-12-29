@@ -33,11 +33,9 @@
 										<h5>Profile Image</h5>
 									</div>
 									<div>
-										<div class="ibox-content no-padding border-left-right text-center">
-											<br>
-											<img alt="image" class="img-fluid" src="{{ asset('assets/upload_images') }}/{{$user->image_name}}" style="width: 200px; height: auto;">
-										</div>
-										<div class="ibox-content profile-content">
+										<div class="ibox-content p-4 border-left-right text-center">
+											<img alt="image" class="img-fluid" src="{{ asset('assets/upload_images') }}/{{$user->image_name}}" style="width: 300px; height: auto;">
+											
 										</div>
 									</div>
 								</div>
@@ -69,7 +67,7 @@
 															</div>
 															<strong class="col-sm-2 col-form-label">City</strong>
 															<div class="col-sm-4 col-form-label">
-																{{ $user->city }}
+																{{ $user->city->city_name }}
 															</div>
 														</div>
 														<div class="row">
@@ -89,12 +87,17 @@
 															</div>
 															<strong class="col-sm-2 col-form-label">Status</strong>
 															<div class="col-sm-4 col-form-label">
+																@if($user->is_blocked == 1)
+																<label class="label label-danger"> Blocked </label>
+																@else
 																@if ($user->status==1)
 																<label class="label label-primary"> Active </label>
 																@else
-																<label class="label label-danger"> Inactive </label>
+																<label class="label label-warning"> Inactive </label>
 																@endif
 															</div>
+
+															@endif
 														</div>
 													</div>
 												</div>

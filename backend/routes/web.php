@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Artisan;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/clearcache', function () {
     $exitCode = Artisan::call('config:clear');

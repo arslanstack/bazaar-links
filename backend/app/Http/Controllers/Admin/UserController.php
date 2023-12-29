@@ -2,15 +2,12 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Models\Admin\BiddingAuction;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\Response;
-use Session, Validator, DB;
 class UserController extends Controller
 {
     public function index(Request $request)
     {
+        
         $query = User::query();
         $search_query = $request->input('search_query');
         if ($request->has('search_query') && !empty($search_query)) {
@@ -28,23 +25,25 @@ class UserController extends Controller
     public function user_details($id)
     {
         $data['user'] = User::where('id', $id)->first();
+        
         if (!empty($data['user'])) {
             return view('admin/users/users_details', $data);
         }
+        
         return view('common/admin_404');
     }
     public function update_statuses(Request $request)
     {
         $data = $request->all();
         $status = User::where('id', $data['id'])->update([
-            'status' => $data['status'],
+            'is_blocked' => $data['status'],
             'updated_at' => date('Y-m-d H:i:s'),
         ]);
         if($status > 0) {
             if($data['status'] == '1'){
-                $finalResult = response()->json(['msg' => 'success', 'response'=>'User activated successfully.']);
+                $finalResult = response()->json(['msg' => 'success', 'response'=>'User Unblocked successfully.']);
             }else{
-                $finalResult = response()->json(['msg' => 'success', 'response'=>'User inactivate successfully.']);
+                $finalResult = response()->json(['msg' => 'success', 'response'=>'User Blocked successfully.']);
             }
             return $finalResult;
         } else {

@@ -49,27 +49,31 @@
                             <tbody>
                                 @php($i = 1)
                                 @foreach($users as $item)
-                                <tr  class="gradeX">
+                                <tr class="gradeX">
                                     <td>{{ $i++ }}</td>
                                     <td>{{$item->name}}</td>
                                     <td>{{$item->email}}</td>
                                     <td>{{ $item->phone_no }}</td>
-                                    <td>{{$item->city}}</td>
+                                    <td>{{$item->city->city_name}}</td>
                                     <td>{{ date_formated($item->created_at)}}</td>
                                     <td>
+                                        @if($item->is_blocked == 1)
+                                        <label class="label label-danger"> Blocked </label>
+                                        @else
                                         @if ($item->status==1)
                                         <label class="label label-primary"> Active </label>
                                         @else
-                                        <label class="label label-danger"> Inactive </label>
+                                        <label class="label label-warning"> Inactive </label>
+                                        @endif
                                         @endif
                                     </td>
                                     <td>
-                                        @if ($item->status==1)
-                                        <button class="btn btn-danger btn-sm btn_update_status" data-id="{{$item->id}}" data-status="0" data-text="You want to inactive this user!" type="button" data-placement="top" title="Inactivate">Inactivate</button>
-                                        @else
-                                        <button class="btn btn-primary btn-sm btn_update_status" data-id="{{$item->id}}" data-status="1" data-text="You want to activate this user!" type="button" data-placement="top" title="Activate">Activate</button>
-                                        @endif
                                         <a href="{{ url('admin/users/detail') }}/{{ $item->id }}" class="btn btn-success btn-sm" data-placement="top" title="Details"> Details </a>
+                                        @if ($item->is_blocked==1)
+                                        <button class="btn btn-primary btn-sm btn_update_status" data-id="{{$item->id}}" data-status="0" data-text="You want to unblock this user!" type="button" data-placement="top" title="Inactivate">Unblock</button>
+                                        @else
+                                        <button class="btn btn-danger btn-sm btn_update_status" data-id="{{$item->id}}" data-status="1" data-text="You want to block this user!" type="button" data-placement="top" title="Activate">Block</button>
+                                        @endif
                                     </td>
                                 </tr>
                                 @endforeach
@@ -95,52 +99,65 @@
     $('#manage_tbl').dataTable({
         "paging": false,
         "searching": false,
-        "bInfo":false,
+        "bInfo": false,
         "responsive": true,
-        "columnDefs": [
-            { "responsivePriority": 1, "targets": 0 },
-            { "responsivePriority": 2, "targets": -1 },
-            ]
+        "columnDefs": [{
+                "responsivePriority": 1,
+                "targets": 0
+            },
+            {
+                "responsivePriority": 2,
+                "targets": -1
+            },
+        ]
     });
-    $(document).on("click" , ".btn_update_status" , function(){
+    $(document).on("click", ".btn_update_status", function() {
         var id = $(this).attr('data-id');
         var status = $(this).attr('data-status');
         var show_text = $(this).attr('data-text');
         swal({
-            title: "Are you sure?",
-            text: show_text,
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Yes, please!",
-            cancelButtonText: "No, cancel please!",
-            closeOnConfirm: false,
-            closeOnCancel: true
-        },
-        function(isConfirm) {
-            if (isConfirm) {
-                $(".confirm").prop("disabled", true);
-                $.ajax({
-                    url:"{{ url('admin/users/update_statuses') }}",
-                    type:'post',
-                    data:{"_token": "{{ csrf_token() }}", 'id': id, 'status': status},
-                    dataType:'json',
-                    success:function(status){
-                        $(".confirm").prop("disabled", false);
-                        if(status.msg == 'success'){
-                            swal({title: "Success!", text: status.response, type: "success"},
-                                function(data){
-                                    location.reload();
-                                });
-                        } else if(status.msg=='error'){
-                            swal("Error", status.response, "error");
+                title: "Are you sure?",
+                text: show_text,
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, please!",
+                cancelButtonText: "No, cancel please!",
+                closeOnConfirm: false,
+                closeOnCancel: true
+            },
+            function(isConfirm) {
+                if (isConfirm) {
+                    $(".confirm").prop("disabled", true);
+                    $.ajax({
+                        url: "{{ url('admin/users/update_statuses') }}",
+                        type: 'post',
+                        data: {
+                            "_token": "{{ csrf_token() }}",
+                            'id': id,
+                            'status': status
+                        },
+                        dataType: 'json',
+                        success: function(status) {
+                            $(".confirm").prop("disabled", false);
+                            if (status.msg == 'success') {
+                                swal({
+                                        title: "Success!",
+                                        text: status.response,
+                                        type: "success"
+                                    },
+                                    function(data) {
+                                        location.reload();
+                                    });
+                            } else if (status.msg == 'error') {
+                                swal("Error", status.response, "error");
+                            }
                         }
-                    }
-                });
-            } else {
-                swal("Cancelled", "", "error");
-            }
-        });
+                    });
+                } else {
+                    swal("Cancelled", "", "error");
+                }
+            });
     });
 </script>
 @endpush

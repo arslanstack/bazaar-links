@@ -6,9 +6,6 @@
 # Node artifact files
 node_modules/
 dist/
-
-# Vendor Composer
-vendor/
 # Compiled Java class files
 *.class
 

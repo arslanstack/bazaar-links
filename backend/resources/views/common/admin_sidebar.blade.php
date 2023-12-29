@@ -24,6 +24,9 @@
             <li class="{{ Request::is('admin/users') ? 'active' : '' }} {{ Request::is('admin/users/detail*') ? 'active' : '' }}">
                 <a href="{{ url('admin/users') }}"><i class="fa-solid fa-users"></i> <span class="nav-label">Users</span></a>
             </li>
+            <li class="{{ Request::is('admin/categories') ? 'active' : '' }} {{ Request::is('admin/categories/*') ? 'active' : '' }}">
+                <a href="{{ url('admin/categories') }}"><i class="fa-solid fa-table"></i> <span class="nav-label">Categories</span></a>
+            </li>
         </ul>
     </div>
 </nav>
