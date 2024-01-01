@@ -3,6 +3,8 @@ use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ProductPostController;
+use App\Http\Controllers\Admin\ProductRequestController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix'  =>  'admin'], function () {
@@ -38,6 +40,17 @@ Route::group(['prefix'  =>  'admin'], function () {
 			Route::post('update_subcategory_status', [CategoryController::class, 'update_subcategory_status']);
 			Route::post('delete_subcategory', [CategoryController::class, 'delete_subcategory']);
 
+		});
+
+		Route::group(['prefix'  =>  'product-posts'], function () {
+			Route::get('/', [ProductPostController::class, 'index']);
+			Route::post('update_statuses', [ProductPostController::class, 'update_statuses']);
+			Route::get('detail/{id}', [ProductPostController::class, 'post_details']);
+		});
+		Route::group(['prefix'  =>  'product-requests'], function () {
+			Route::get('/', [ProductRequestController::class, 'index']);
+			Route::post('update_statuses', [ProductRequestController::class, 'update_statuses']);
+			Route::get('detail/{id}', [ProductRequestController::class, 'prod_req_details']);
 		});
 	});
 });

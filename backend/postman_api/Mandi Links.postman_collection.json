@@ -956,7 +956,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0L21hbmRpbGlua3MvYXBpL2xvZ2luIiwiaWF0IjoxNzAzODUxNDYyLCJleHAiOjE3MDM4NTUwNjIsIm5iZiI6MTcwMzg1MTQ2MiwianRpIjoiRGM5YVJlNzdXUnVtUFdqRiIsInN1YiI6IjkyIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.QujYYb0I-7yh0sTfhGug0Om0WkGSFBLPNm45vrhNMTQ",
+								"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0L21hbmRpbGlua3MvYXBpL2xvZ2luIiwiaWF0IjoxNzA0MDk1MzIzLCJleHAiOjE3MDQwOTg5MjMsIm5iZiI6MTcwNDA5NTMyMywianRpIjoiN1lnaHpRMGdPY3B4V2pTRSIsInN1YiI6IjkyIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.eXfdcvpIm-YSte6AOSYS1ImGRjBEWyiogss1mnJ_Ctk",
 								"type": "text"
 							},
 							{
@@ -970,7 +970,7 @@
 							"formdata": [
 								{
 									"key": "title",
-									"value": "Desi Ghee ",
+									"value": "100 %  Pure Desi Ghee from Buffalo Milk & Butter",
 									"type": "text"
 								},
 								{
@@ -1279,7 +1279,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0L21hbmRpbGlua3MvYXBpL2xvZ2luIiwiaWF0IjoxNzAzODM0MjMzLCJleHAiOjE3MDM4Mzc4MzMsIm5iZiI6MTcwMzgzNDIzMywianRpIjoid3VabzR0VDh1bXRyVmh0ZyIsInN1YiI6IjkyIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.bVpmzYKXkP8PYALqLi0Z0my2r3qZYZZRdqWAp0HC_w8",
+								"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0L21hbmRpbGlua3MvYXBpL2xvZ2luIiwiaWF0IjoxNzA0MTAzNDc2LCJleHAiOjE3MDQxMDcwNzYsIm5iZiI6MTcwNDEwMzQ3NiwianRpIjoidmdkTUtIcVJ6SHhud3RpSSIsInN1YiI6IjkyIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.wj80i3jqp6KjpNfGMXMWI98RaiAst3Ed0tu42SBl5f4",
 								"type": "text"
 							},
 							{
@@ -1731,6 +1731,26 @@
 								"mandilinks",
 								"api",
 								"get-cities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Units",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/mandilinks/api/get-units",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"mandilinks",
+								"api",
+								"get-units"
 							]
 						}
 					},

@@ -201,3 +201,39 @@ if (!function_exists('count_subcategories')) {
 		return $query;
 	}
 }
+if (!function_exists('count_post_favs')) {
+	function count_post_favs($postid) {
+		$query = DB::table('favourites')->where('post_id', $postid)->where('post_type', 0)->count();
+		return $query;
+	}
+}
+if (!function_exists('count_request_favs')) {
+	function count_request_favs($reqid) {
+		$query = DB::table('favourites')->where('post_id', $reqid)->where('post_type', 1)->count();
+		return $query;
+	}
+}
+if (!function_exists('count_user_posts')) {
+	function count_user_posts($vendor_id) {
+		$query = DB::table('product_posts')->where('vendor_id', $vendor_id)->count();
+		return $query;
+	}
+}
+if (!function_exists('count_user_requests')) {
+	function count_user_requests($vendor_id) {
+		$query = DB::table('product_requests')->where('vendor_id', $vendor_id)->count();
+		return $query;
+	}
+}
+if (!function_exists('count_user_favourites')) {
+	function count_user_favourites($vendor_id) {
+		$query = DB::table('favourites')->where('user_id', $vendor_id)->count();
+		return $query;
+	}
+}
+if (!function_exists('count_categories')) {
+	function count_categories() {
+		$query = DB::table('categories')->where('parent_id', null)->count();
+		return $query;
+	}
+}

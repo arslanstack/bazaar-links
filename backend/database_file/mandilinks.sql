@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 29, 2023 at 07:32 AM
+-- Generation Time: Jan 01, 2024 at 11:28 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -84,12 +84,12 @@ INSERT INTO `categories` (`id`, `title`, `image`, `parent_id`, `status`, `create
 (22, 'Corn', NULL, NULL, 1, '2023-12-28 00:26:02', '2023-12-28 00:26:02'),
 (23, 'FMCG(Packed Food)', NULL, NULL, 1, '2023-12-28 00:26:18', '2023-12-28 00:26:18'),
 (24, 'Flour', NULL, NULL, 1, '2023-12-28 00:26:25', '2023-12-28 00:26:25'),
-(25, 'Tea & Coffee', NULL, NULL, 1, '2023-12-28 00:26:34', '2023-12-28 00:26:34'),
+(25, 'Tea & Coffee', NULL, NULL, 1, '2023-12-28 00:26:34', '2023-12-29 09:04:22'),
 (26, 'Sugar', NULL, NULL, 1, '2023-12-28 00:26:43', '2023-12-28 00:26:43'),
 (27, 'Agri Machinery', NULL, NULL, 1, '2023-12-28 00:26:59', '2023-12-28 00:26:59'),
 (28, 'Grains', NULL, NULL, 1, '2023-12-28 00:27:07', '2023-12-28 00:27:07'),
-(29, 'Dry Fruits', NULL, NULL, 1, '2023-12-28 00:27:14', '2023-12-28 08:31:04'),
-(30, 'All Dry Fruits', '1703741282.jpg', 29, 1, '2023-12-28 00:28:02', '2023-12-28 08:31:04'),
+(29, 'Dry Fruits', NULL, NULL, 1, '2023-12-28 00:27:14', '2024-01-01 03:19:21'),
+(30, 'All Dry Fruits', '1703741282.jpg', 29, 1, '2023-12-28 00:28:02', '2024-01-01 03:19:21'),
 (31, 'Pulses', '1703741370.jpg', 28, 1, '2023-12-28 00:29:30', '2023-12-28 00:29:30'),
 (32, 'Beans', '1703741409.jfif', 28, 1, '2023-12-28 00:30:09', '2023-12-28 00:30:09'),
 (33, 'Quinoa', '1703741472.jfif', 28, 1, '2023-12-28 00:31:12', '2023-12-28 00:31:12'),
@@ -97,10 +97,10 @@ INSERT INTO `categories` (`id`, `title`, `image`, `parent_id`, `status`, `create
 (35, 'Jaggery', '1703741586.jfif', 26, 1, '2023-12-28 00:33:06', '2023-12-28 08:35:57'),
 (36, 'Brown Sugar', '1703741599.jfif', 26, 1, '2023-12-28 00:33:19', '2023-12-28 00:33:19'),
 (37, 'White Sugar', '1703741609.jfif', 26, 1, '2023-12-28 00:33:29', '2023-12-28 00:33:29'),
-(38, 'Coffee Beans', '1703741721.jfif', 25, 1, '2023-12-28 00:35:21', '2023-12-28 00:35:21'),
-(39, 'Ground Coffee', '1703741732.jfif', 25, 1, '2023-12-28 00:35:32', '2023-12-28 00:35:32'),
-(40, 'Black Tea', '1703741743.jfif', 25, 1, '2023-12-28 00:35:43', '2023-12-28 00:35:43'),
-(41, 'Green Tea', '1703741756.jfif', 25, 1, '2023-12-28 00:35:56', '2023-12-28 00:35:56'),
+(38, 'Coffee Beans', '1703741721.jfif', 25, 1, '2023-12-28 00:35:21', '2023-12-29 09:04:22'),
+(39, 'Ground Coffee', '1703741732.jfif', 25, 1, '2023-12-28 00:35:32', '2023-12-29 09:04:23'),
+(40, 'Black Tea', '1703741743.jfif', 25, 1, '2023-12-28 00:35:43', '2023-12-29 09:04:23'),
+(41, 'Green Tea', '1703741756.jfif', 25, 1, '2023-12-28 00:35:56', '2023-12-29 09:04:23'),
 (42, 'Honey', '1703741798.jpg', 1, 1, '2023-12-28 00:36:38', '2023-12-28 00:36:38'),
 (43, 'Soda Drinks', '1703741909.jfif', 10, 1, '2023-12-28 00:38:29', '2023-12-28 00:38:29'),
 (44, 'Juices', '1703741918.jfif', 10, 1, '2023-12-28 00:38:38', '2023-12-28 00:38:38'),
@@ -595,6 +595,21 @@ INSERT INTO `cities` (`id`, `city_name`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `favourites`
+--
+
+CREATE TABLE `favourites` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `post_type` tinyint(4) NOT NULL COMMENT '0 = product_post, 1 = product_request',
+  `post_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `product_posts`
 --
 
@@ -620,6 +635,14 @@ CREATE TABLE `product_posts` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `product_posts`
+--
+
+INSERT INTO `product_posts` (`id`, `title`, `product_location`, `unit_id`, `price`, `quantity`, `category_id`, `subcategory_id`, `moisture`, `place_of_origin`, `brand`, `model_no`, `certification`, `description`, `images`, `status`, `vendor_id`, `vendor_location`, `created_at`, `updated_at`) VALUES
+(12, 'Desi Ghee', 178, 9, '2500', '02', 12, 48, '99', NULL, 'ASG Dairy Farm', NULL, NULL, '100 %  Pure Desi Ghee from Buffalo Milk', '[]', 1, 92, '152', '2024-01-01 02:49:15', '2024-01-01 03:09:16'),
+(16, '100 %  Pure Desi Ghee from Buffalo Milk & Butter', 178, 9, '2500', '02', 12, 48, '99', NULL, 'ASG Dairy Farm', NULL, NULL, '100 %  Pure Desi Ghee from Buffalo Milk', '[\"prod_req_1704098698_65927b8a5466c.png\",\"prod_req_1704098698_65927b8a5523d.jpg\",\"prod_req_1704098698_65927b8a55d3c.jpg\",\"prod_req_1704098698_65927b8a5687c.jpg\",\"prod_req_1704098698_65927b8a57e7c.jpg\",\"prod_req_1704098698_65927b8a58969.jpg\"]', 1, 92, '152', '2024-01-01 03:44:58', '2024-01-01 03:44:58');
 
 -- --------------------------------------------------------
 
@@ -648,6 +671,13 @@ CREATE TABLE `product_requests` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `product_requests`
+--
+
+INSERT INTO `product_requests` (`id`, `title`, `product_location`, `unit_id`, `quantity`, `category_id`, `subcategory_id`, `moisture`, `place_of_origin`, `brand`, `model_no`, `certification`, `description`, `image`, `status`, `vendor_id`, `vendor_location`, `created_at`, `updated_at`) VALUES
+(6, 'Cooking Oil', 178, 9, '02', 12, 48, '99', 'Jammu Stop', 'Go Global', '37597', 'PFA', 'Palm Oil Used', 'prod_req_1704104004_65929044105c6.jfif', 1, 92, 152, '2024-01-01 05:13:24', '2024-01-01 05:17:48');
 
 -- --------------------------------------------------------
 
@@ -747,7 +777,7 @@ CREATE TABLE `users` (
   `image_path` varchar(255) DEFAULT 'https://explorelogicsit.net/mandilinks/public/assets/upload_images/user.png',
   `image_name` varchar(255) DEFAULT 'user.png',
   `otp` int(4) DEFAULT NULL,
-  `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=inactive, 1=active',
+  `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0=inactive or del by user, 1=active',
   `is_blocked` tinyint(4) NOT NULL DEFAULT 0,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
@@ -758,7 +788,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `phone_no`, `city_id`, `address`, `zip`, `image_path`, `image_name`, `otp`, `status`, `is_blocked`, `created_at`, `updated_at`) VALUES
-(92, 'John Doe', 'calebjanaltair@gmail.com', '$2y$12$rMQ.wevGJyBvxPKygW8FHezrfrsCxB1T04UDIbFNf.FYA6kLCpMPe', '+923394008600', 152, '4170 Barkat Market', 54000, 'http://localhost/mandilinks/public/assets/upload_images/dp_1703768520.png', 'dp_1703768520.png', NULL, 1, 0, '2023-12-28 12:58:59', '2023-12-28 13:04:06');
+(92, 'John Moe', 'calebjanaltair@gmail.com', '$2y$12$A1kHkTc5TnFL7swEQMr/KuUvw5jkP7OnoHV.xxe.7Wyg2sGvyIJ9i', '+923394008600', 152, '4170 Barkat Market', 54000, 'http://localhost/mandilinks/public/assets/upload_images/user.png', 'user.png', NULL, 1, 0, '2023-12-29 09:49:14', '2023-12-29 10:56:18');
 
 --
 -- Indexes for dumped tables
@@ -781,6 +811,12 @@ ALTER TABLE `categories`
 -- Indexes for table `cities`
 --
 ALTER TABLE `cities`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `favourites`
+--
+ALTER TABLE `favourites`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -840,16 +876,22 @@ ALTER TABLE `cities`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=468;
 
 --
+-- AUTO_INCREMENT for table `favourites`
+--
+ALTER TABLE `favourites`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT for table `product_posts`
 --
 ALTER TABLE `product_posts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `product_requests`
 --
 ALTER TABLE `product_requests`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `settings`
@@ -867,7 +909,7 @@ ALTER TABLE `units`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
 
 --
 -- Constraints for dumped tables

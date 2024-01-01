@@ -27,6 +27,12 @@
             <li class="{{ Request::is('admin/categories') ? 'active' : '' }} {{ Request::is('admin/categories/*') ? 'active' : '' }}">
                 <a href="{{ url('admin/categories') }}"><i class="fa-solid fa-table"></i> <span class="nav-label">Categories</span></a>
             </li>
+            <li class="{{ Request::is('admin/product-posts') ? 'active' : '' }} {{ Request::is('admin/product-posts/*') ? 'active' : '' }}">
+                <a href="{{ url('admin/product-posts') }}"><i class="fa-solid fa-image"></i> <span class="nav-label">Product Posts</span></a>
+            </li>
+            <li class="{{ Request::is('admin/product-requests') ? 'active' : '' }} {{ Request::is('admin/product-requests/*') ? 'active' : '' }}">
+                <a href="{{ url('admin/product-requests') }}"><i class="fa-solid fa-person-circle-question"></i> <span class="nav-label">Product Requests</span></a>
+            </li>
         </ul>
     </div>
 </nav>

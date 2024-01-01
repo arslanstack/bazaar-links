@@ -13,6 +13,7 @@ use App\Http\Controllers\API\FavouritesController;
 
 Route::group(['middleware' => 'api'], function ($router) {
     Route::get('get-cities', [CommonController::class, 'get_cities']);
+    Route::get('get-units', [CommonController::class, 'get_units']);
 
     // Auth Routes
     Route::post('send-register-otp', [UserAuthController::class, 'sendRegisterOTP']);

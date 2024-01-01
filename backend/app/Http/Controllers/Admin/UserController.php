@@ -3,6 +3,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\ProductPost;
+use App\Models\ProductRequest;
+
 class UserController extends Controller
 {
     public function index(Request $request)
@@ -25,7 +28,8 @@ class UserController extends Controller
     public function user_details($id)
     {
         $data['user'] = User::where('id', $id)->first();
-        
+        $data['posts'] = ProductPost::where('vendor_id', $id)->orderBy('id', 'DESC')->paginate(10);
+        $data['requests'] = ProductRequest::where('vendor_id', $id)->orderBy('id', 'DESC')->paginate(10);
         if (!empty($data['user'])) {
             return view('admin/users/users_details', $data);
         }
